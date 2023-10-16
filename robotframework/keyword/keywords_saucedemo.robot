@@ -1,6 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
-Resource     ../saucedemo.robot
+Resource     ../test/saucedemo.robot
+Resource    ../variable/variable_saucedemo.robot
 
 ***Keywords***
 Open url 
