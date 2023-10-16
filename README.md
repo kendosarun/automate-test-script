@@ -1,2 +1,3 @@
 # automate-test-script
-for push test script
+
+stack of automation testing repository
