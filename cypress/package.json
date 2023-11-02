@@ -1,6 +1,9 @@
 {
   "scripts": {
-    "cypress:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:open:mock": "cypress open --env MOCK=true",
+    "cy:run": "cypress run --config video=false",
+    "cy:run:mock": "cypress run --config video=false --env MOCK=true"
   },
   "devDependencies": {
     "cypress": "^13.4.0",

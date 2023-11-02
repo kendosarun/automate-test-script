@@ -35,3 +35,15 @@
 //     }
 //   }
 // }
+
+//              Overwrite commands
+// -- This will overwrite an existing command --
+//
+//
+Cypress.Commands.overwrite('intercept', (_originalFn, _method, _url, _handler) => {
+    if (Cypress.env('MOCK')) {
+        return _originalFn(_method, _url, _handler);
+    }
+
+    return _originalFn(_method, _url, undefined);
+});
