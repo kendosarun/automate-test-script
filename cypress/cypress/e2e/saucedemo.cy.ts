@@ -1,3 +1,5 @@
+import { clickLoginButton, fillPassword, fillUsername } from "../support/action-sauce-demo";
+
 describe('Sauce Demo Scenario', () => {
 
     //params
@@ -7,7 +9,14 @@ describe('Sauce Demo Scenario', () => {
     });
     
 
-    it('Case : 1', () => {
-        //Start Action
+    it('Case : Login Standard user success', () => {
+        
+        cy.visit('https://www.saucedemo.com/')
+            
+        fillUsername('standard_user');
+
+        fillPassword('secret_sauce');
+
+        clickLoginButton();
     });
 });
