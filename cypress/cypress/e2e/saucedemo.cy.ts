@@ -2,19 +2,15 @@ import { clickLoginButton, fillPassword, fillUsername, verifySauceDemoPage } fro
 
 describe('Sauce Demo Scenario', () => {
 
-    //params
-
     beforeEach(() => {  
 
-    // For Mock intercept if you has.
+        cy.visit('https://www.saucedemo.com/');
 
     });
     
 
     it('Case : Login Standard user success', () => {
 
-        cy.visit('https://www.saucedemo.com/');
-        
         verifySauceDemoPage();
             
         fillUsername('standard_user');
@@ -31,8 +27,6 @@ describe('Sauce Demo Scenario', () => {
     });
 
     it('Case : Login with Invalid user', () => {
-
-        cy.visit('https://www.saucedemo.com/');
 
         verifySauceDemoPage();
             
@@ -66,8 +60,6 @@ describe('Sauce Demo Scenario', () => {
 
 
     it('Case : Click login button without username and password ', () => {
-
-        cy.visit('https://www.saucedemo.com/');
 
         verifySauceDemoPage();
 
