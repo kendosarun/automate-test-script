@@ -10,5 +10,6 @@ export class Homepage {
     async verifyHomePage() {
         await expect(this.page.getByText('Swag Labs')).toBeVisible();
         await expect(this.page.getByText('Products')).toBeVisible();
+        await expect(this.page).toHaveURL(/inventory/);
     }
 }
