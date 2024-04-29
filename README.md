@@ -1,7 +1,7 @@
-# automate-test-script
+# Automate test script
 
-stack of automation testing repository
+## stack of automation testing repository
 
-1. Robot Framework (Selenium Library)
-2. Playwright
-3. Cypress
+- [Robot Framework (Selenium Library)](./robotframework/test/)
+- [Playwright](./playwright/tests/)
+- [Cypress](./cypress/cypress/e2e/)
