@@ -1,26 +1,26 @@
-export const fillUsername = (username: string) => {
+export default class homePage {
+  fillUsername = (username: string) => {
+    cy.get('[data-test="username"]').should("exist").type(username);
+  };
 
-    cy.get('[data-test="username"]').should('exist')
-        .type(username);
-}
+  fillPassword = (password: string) => {
+    cy.get('[data-test="password"]').should("exist").type(password);
+  };
 
-export const fillPassword = (password: string) => {
+  clickLoginButton = () => {
+    cy.get('[data-test="login-button"]').should("have.value", "Login").click();
+  };
 
-    cy.get('[data-test="password"]').should('exist')
-        .type(password);
-}
+  verifySauceDemoPage = () => {
+    cy.get("#login_button_container").should("exist");
+    cy.get("#login_credentials").should("exist");
+    cy.get('[data-test="username"]').should("have.text", "");
+    cy.get('[data-test="password"]').should("have.text", "");
+    cy.get('[data-test="login-button"]').should("have.value", "Login");
+  };
 
-export const clickLoginButton = () => {
+  expectedResult(locator: string, assert: string, value: string) {
+    cy.get(locator).should(assert,value)
+  }
 
-    cy.get('[data-test="login-button"]').should('have.value', 'Login')
-        .click();
-}
-
-export const verifySauceDemoPage = () => {
-
-    cy.get('#login_button_container').should('exist');
-    cy.get('#login_credentials').should('exist');
-    cy.get('[data-test="username"]').should('have.text', '')
-    cy.get('[data-test="password"]').should('have.text', '')
-    cy.get('[data-test="login-button"]').should('have.value', 'Login')
 }

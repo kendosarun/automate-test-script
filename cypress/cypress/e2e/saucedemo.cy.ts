@@ -1,6 +1,8 @@
-import { clickLoginButton, fillPassword, fillUsername, verifySauceDemoPage } from "../support/action-sauce-demo";
+import  homePage from '../support/action-sauce-demo';
 
 describe('Sauce Demo Scenario', () => {
+
+    const myHomePage = new homePage();
 
     beforeEach(() => {  
 
@@ -11,33 +13,44 @@ describe('Sauce Demo Scenario', () => {
 
     it('Case : Login Standard user success', () => {
 
-        verifySauceDemoPage();
+        myHomePage.verifySauceDemoPage();
             
-        fillUsername('standard_user');
+        myHomePage.fillUsername('standard_user');
 
-        fillPassword('secret_sauce');
+        myHomePage.fillPassword('secret_sauce');
 
-        clickLoginButton();
+        myHomePage.clickLoginButton();
 
         //Expected
-        
-        cy.get('#header_container > div.header_secondary_container > span').should('have.text', 'Products');
-        cy.get('.app_logo').should('have.text', 'Swag Labs')
+        myHomePage.expectedResult(
+        '#header_container > div.header_secondary_container > span', 
+        'have.text', 
+        'Products');
+
+        myHomePage.expectedResult(
+            '.app_logo',
+            'have.text',
+            'Swag Labs'
+        );
 
     });
 
     it('Case : Login with Invalid user', () => {
 
-        verifySauceDemoPage();
+        myHomePage.verifySauceDemoPage();
             
-        fillUsername('invalid_user');
+        myHomePage.fillUsername('invalid_user');
 
-        fillPassword('secret_sauce');
+        myHomePage.fillPassword('secret_sauce');
 
-        clickLoginButton();
+        myHomePage.clickLoginButton();
 
         //Expected
-        cy.get('[data-test="error"]').should('have.text', 'Epic sadface: Username and password do not match any user in this service');
+        myHomePage.expectedResult(
+            '[data-test="error"]',
+            'have.text',
+            'Epic sadface: Username and password do not match any user in this service'
+        );
 
     });
 
@@ -45,28 +58,36 @@ describe('Sauce Demo Scenario', () => {
 
         cy.visit('https://www.saucedemo.com/');
 
-        verifySauceDemoPage();
+        myHomePage.verifySauceDemoPage();
             
-        fillUsername('locked_out_user');
+        myHomePage.fillUsername('locked_out_user');
 
-        fillPassword('secret_sauce');
+        myHomePage.fillPassword('secret_sauce');
 
-        clickLoginButton();
+        myHomePage.clickLoginButton();
 
         //Expected
-        cy.get('[data-test="error"]').should('have.text', 'Epic sadface: Sorry, this user has been locked out.');
+        myHomePage.expectedResult(
+            '[data-test="error"]',
+            'have.text',
+            'Epic sadface: Sorry, this user has been locked out.'
+        );
 
     });
 
 
     it('Case : Click login button without username and password ', () => {
 
-        verifySauceDemoPage();
+        myHomePage.verifySauceDemoPage();
 
-        clickLoginButton();
+        myHomePage.clickLoginButton();
 
         //Expected
-        cy.get('[data-test="error"]').should('have.text', 'Epic sadface: Username is required');
+        myHomePage.expectedResult(
+            '[data-test="error"]',
+            'have.text',
+            'Epic sadface: Username is required'
+        );
         
     });
     
