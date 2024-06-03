@@ -33,3 +33,6 @@ junit.xml
 .DS_Store
 Thumbs.db
 /.vscode
+
+# Screenshot
+/.screenshots
